@@ -1,8 +1,6 @@
 import Model.ConstRepository;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -19,26 +17,24 @@ public class Runner {
         try{
             ServerSocket serverSocket = new ServerSocket(ConstRepository.port);
             System.out.println("服务器启动成功！");
-
             Socket socket = null;
             while(null != (socket = serverSocket.accept())){
-                InputStream inputStream = socket.getInputStream();
-                byte[] bytes = new byte[1024];
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                StringBuilder stringBuilder = new StringBuilder();
-                int len;
-                while (-1 != (len = inputStream.read(bytes))){
-                    stringBuilder.append(new String(bytes, 0, len, StandardCharsets.UTF_8));
+                String temp = null;
+                StringBuilder getInfo = new StringBuilder();
+                while(null != (temp = bufferedReader.readLine())){
+                    getInfo.append(temp);
                 }
-                inputStream.close();
 
-                OutputStream out = socket.getOutputStream();
-                out.write("I get it!".getBytes(StandardCharsets.UTF_8));
-                out.flush();
-                out.close();
+                System.out.println("服务器收到了" + getInfo.toString());
+
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                bufferedWriter.write("get it\n");
+                bufferedWriter.flush();
+
                 socket.close();
-
-                if(stringBuilder.toString().equals("#stop")) break;
+                if(getInfo.equals("#stop")) break;
             }
 
             serverSocket.close();
