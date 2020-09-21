@@ -16,4 +16,10 @@ public class Result<T> {
     private String message;
     //返回信息
     private T data;
+
+    @Override
+    public String toString() {
+        return "{\"code\":\"" + (code != null ? code : "") + "\",\"message\":\"" + (message != null ? message : "")
+                + "\",\"data\":\"" + (data != null ? data : "") + "\"}";
+    }
 }

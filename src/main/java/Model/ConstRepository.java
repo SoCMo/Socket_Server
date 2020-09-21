@@ -9,4 +9,6 @@ package Model;
 public final class ConstRepository {
     //服务端端口
     public static final int port = 8084;
+    //服务器地址
+    public static final String address = "localhost";
 }
