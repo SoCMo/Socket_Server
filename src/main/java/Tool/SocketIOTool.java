@@ -1,5 +1,10 @@
 package Tool;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -25,10 +30,16 @@ public class SocketIOTool {
     public static String in(Socket socket) {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            StringBuilder getInfo = new StringBuilder();
+
             String str;
 
+//            StringBuilder temp = new StringBuilder();
             while ((str = bufferedReader.readLine()) != null) {
+                try {
+                    Object object = JSON.parse(str);
+                } catch (JSONException e) {
+                    continue;
+                }
                 return str;
             }
 
