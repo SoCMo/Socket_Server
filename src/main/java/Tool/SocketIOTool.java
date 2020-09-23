@@ -1,8 +1,5 @@
 package Tool;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.*;
 import java.net.Socket;
 
@@ -13,7 +10,6 @@ import java.net.Socket;
  * create: 2020/9/21 20:45
  */
 public class SocketIOTool {
-    private static Logger logger = LoggerFactory.getLogger(SocketIOTool.class);
 
     public static void out(Socket socket, String msg) {
         try {
@@ -22,7 +18,7 @@ public class SocketIOTool {
             bufferedWriter.write("\n");
             bufferedWriter.flush();
         } catch (IOException e) {
-            logger.error(e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
@@ -37,7 +33,7 @@ public class SocketIOTool {
             }
 
         } catch (IOException e) {
-            logger.error("与客户端信息交互失败。接收不到内容。");
+            System.out.println("与客户端信息交互失败。接收不到内容。");
             return null;
         }
 

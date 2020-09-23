@@ -3,8 +3,6 @@ import Exception.*;
 import Thread.*;
 import Model.response.Result;
 import Tool.ResultTool;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -16,8 +14,6 @@ import java.net.Socket;
  * create: 2020/9/21 19:53
  */
 public class UserServiceImpl {
-    private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
-
     public static Result Login(String name, Socket socket){
         try {
             if(name.isBlank()) {
@@ -28,11 +24,11 @@ public class UserServiceImpl {
                 return ResultTool.error(401, "你已经登录！");
             }else {
                 ThreadPool.userMap.login(name, socket);
-                logger.info(name + "登录成功");
+                System.out.println(name + "登录成功");
                 return ResultTool.success();
             }
         } catch (AllException e) {
-            logger.error(name + "登录失败,因为:" + e.getMsg());
+            System.out.println(name + "登录失败,因为:" + e.getMsg());
             return ResultTool.error(e.getErrCode(), e.getMsg());
         }
     }
@@ -50,10 +46,10 @@ public class UserServiceImpl {
                 return ResultTool.success();
             }
         } catch (AllException e) {
-            logger.error(e.getMsg());
+            System.out.println(e.getMsg());
             return ResultTool.error(e.getErrCode(), e.getMsg());
         } catch (IOException e) {
-            logger.error(e.getMessage());
+            System.out.println(e.getMessage());
             return ResultTool.error(500, "系统运行错误!");
         }
     }

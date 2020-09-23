@@ -6,13 +6,8 @@ import Tool.SocketIOTool;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.io.*;
 import java.net.Socket;
-import java.util.Dictionary;
 
 /**
  * program: Service
@@ -21,8 +16,6 @@ import java.util.Dictionary;
  * create: 2020/9/21
  */
 public class Router {
-    private static Logger logger = LoggerFactory.getLogger(Router.class);
-
     public static boolean Analysis(String input, Socket socket){
         boolean isQuit = false;
         Result result = ResultTool.error(500, "未知错误");
@@ -43,7 +36,7 @@ public class Router {
                     result = ResultTool.error(403, "未找到对应的方法!");
             }
         }catch (JSONException e){
-            logger.error(e.getMessage());
+            System.out.println(e.getMessage());
             result = ResultTool.error(403, "发送的信息不是Json格式");
         }finally {
             SocketIOTool.out(socket, result.toString());
