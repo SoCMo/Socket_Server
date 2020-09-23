@@ -21,7 +21,7 @@ import java.util.Dictionary;
  * create: 2020/9/21
  */
 public class Router {
-    private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(Router.class);
 
     public static boolean Analysis(String input, Socket socket){
         boolean isQuit = false;

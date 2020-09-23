@@ -17,7 +17,7 @@ import java.net.Socket;
  * create: 2020/9/21
  */
 public class Runner {
-    private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(Runner.class);
 
     public static void main(String[] args){
         try{
@@ -25,7 +25,7 @@ public class Runner {
             ServerSocket serverSocket = new ServerSocket(ConstRepository.port);
             ThreadPool threadPool = new ThreadPool();
             logger.info("服务器启动成功！");
-            Socket socket = null;
+            Socket socket;
 
             while(null != (socket = serverSocket.accept())){
                 threadPool.submit(new ThreadTask(socket));

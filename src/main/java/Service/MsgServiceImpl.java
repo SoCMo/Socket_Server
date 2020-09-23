@@ -21,7 +21,7 @@ import java.net.Socket;
  * create: 2020/9/21 20:22
  */
 public class MsgServiceImpl {
-    private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static Logger logger = LoggerFactory.getLogger(MsgServiceImpl.class);
 
     public static Result sendMsg(String name, String msg){
         try {
