@@ -1,6 +1,8 @@
 package Thread;
 
 import Exception.*;
+import Tool.ResultTool;
+import Tool.SocketIOTool;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -34,6 +36,7 @@ public class UserMap {
     public void logout(String name) throws IOException, AllException {
         if(lockedUser.containsKey(name)) throw new AllException(EmAllException.SENDING_MESSAGE);
         if(!socketHashMap.containsKey(name)) throw new AllException(EmAllException.USER_OFFLINE);
+        SocketIOTool.out(socketHashMap.get(name), ResultTool.success().toString());
         socketHashMap.get(name).close();
         socketHashMap.remove(name);
     }

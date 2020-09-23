@@ -39,7 +39,7 @@ public class Router {
             System.out.println(e.getMessage());
             result = ResultTool.error(403, "发送的信息不是Json格式");
         }finally {
-            SocketIOTool.out(socket, result.toString());
+            if (!isQuit) SocketIOTool.out(socket, result.toString());
         }
         return isQuit;
     }
