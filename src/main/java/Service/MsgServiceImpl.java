@@ -30,7 +30,7 @@ public class MsgServiceImpl {
                 throw new AllException(EmAllException.USER_OFFLINE);
             }
 
-            SocketIOTool.out(socket, msg);
+            SocketIOTool.out(socket, ResultTool.success(msg).toString());
             ThreadPool.userMap.unlock(name);
             return ResultTool.success();
         } catch (AllException e) {
