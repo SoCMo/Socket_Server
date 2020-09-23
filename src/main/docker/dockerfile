@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11.0.8-jdk
 VOLUME /tmp
 ADD Socket_Server-1.0-SNAPSHOT.jar app.jar
 RUN sh -c 'touch /app.jar'
