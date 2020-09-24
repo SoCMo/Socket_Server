@@ -27,7 +27,7 @@ public class MsgServiceImpl {
                 throw new AllException(EmAllException.USER_OFFLINE);
             }
 
-            SocketIOTool.out(socket, ResultTool.success(msgResponse).toString());
+            SocketIOTool.out(socket, ResultTool.success(201, msgResponse).toString());
             ThreadPool.userMap.unlock(name);
             return ResultTool.success();
         } catch (AllException e) {
