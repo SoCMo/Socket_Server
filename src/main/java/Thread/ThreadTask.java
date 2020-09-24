@@ -15,9 +15,11 @@ import java.net.Socket;
  */
 public class ThreadTask implements Runnable{
     private Socket socket;
+    private StringBuilder userName;
 
     public ThreadTask(Socket socket) {
         this.socket = socket;
+        this.userName = new StringBuilder();
     }
 
     public void run() {
@@ -26,7 +28,7 @@ public class ThreadTask implements Runnable{
             if(input == null) SocketIOTool.out(socket, JSONObject.toJSONString(ResultTool.error(403, "接收不到内容!")));
             else {
                 System.out.println("服务端接收到了:" + input);
-                if (Router.Analysis(input, this.socket)) break;
+                if (Router.Analysis(input, this.socket, this.userName)) break;
             }
         }
     }

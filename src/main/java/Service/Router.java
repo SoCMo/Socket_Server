@@ -16,21 +16,21 @@ import java.net.Socket;
  * create: 2020/9/21
  */
 public class Router {
-    public static boolean Analysis(String input, Socket socket){
+    public static boolean Analysis(String input, Socket socket, StringBuilder userName) {
         boolean isQuit = false;
         Result result = ResultTool.error(500, "未知错误");
         try {
             JSONObject json = JSON.parseObject(input);
-            switch (json.getString("method")){
+            switch (json.getString("method")) {
                 case "login":
-                    result = UserServiceImpl.Login(json.getString("name"), socket);
+                    result = UserServiceImpl.Login(json.getString("name"), socket, userName);
                     break;
                 case "logout":
                     result = UserServiceImpl.Logout(json.getString("name"));
                     isQuit = true;
                     break;
                 case "sendMsg":
-                    result = MsgServiceImpl.sendMsg(json.getString("name"), json.getString("msg"));
+                    result = MsgServiceImpl.sendMsg(json.getString("name"), json.getString("msg"), userName.toString());
                     break;
                 default:
                     result = ResultTool.error(403, "未找到对应的方法!");

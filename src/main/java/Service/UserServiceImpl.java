@@ -14,17 +14,18 @@ import java.net.Socket;
  * create: 2020/9/21 19:53
  */
 public class UserServiceImpl {
-    public static Result Login(String name, Socket socket){
+    public static Result Login(String name, Socket socket, StringBuilder userName) {
         try {
-            if(name.isBlank()) {
+            if (name.isBlank()) {
                 throw new AllException(EmAllException.BAD_REQUEST);
             }
 
-            if(ThreadPool.userMap.contains(name)){
+            if (ThreadPool.userMap.contains(name)) {
                 return ResultTool.error(401, "你已经登录！");
-            }else {
+            } else {
                 ThreadPool.userMap.login(name, socket);
                 System.out.println(name + "登录成功");
+                userName.append(name);
                 return ResultTool.success();
             }
         } catch (AllException e) {

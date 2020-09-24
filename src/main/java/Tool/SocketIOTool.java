@@ -30,7 +30,6 @@ public class SocketIOTool {
     public static String in(Socket socket) {
         try {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
             String str;
 
 //            StringBuilder temp = new StringBuilder();

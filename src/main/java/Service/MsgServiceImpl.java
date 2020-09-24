@@ -1,5 +1,6 @@
 package Service;
 
+import Model.response.MsgResponse;
 import Thread.*;
 import Exception.*;
 
@@ -16,14 +17,17 @@ import java.net.Socket;
  * create: 2020/9/21 20:22
  */
 public class MsgServiceImpl {
-    public static Result sendMsg(String name, String msg){
+    public static Result sendMsg(String name, String msg, String from) {
         try {
+            if (from == null || from.isBlank()) return ResultTool.error(403, "您还未登录");
+
+            MsgResponse msgResponse = new MsgResponse(msg, from);
             Socket socket = ThreadPool.userMap.getSocket(name);
-            if(socket == null){
+            if (socket == null) {
                 throw new AllException(EmAllException.USER_OFFLINE);
             }
 
-            SocketIOTool.out(socket, ResultTool.success(msg).toString());
+            SocketIOTool.out(socket, ResultTool.success(msgResponse).toString());
             ThreadPool.userMap.unlock(name);
             return ResultTool.success();
         } catch (AllException e) {
