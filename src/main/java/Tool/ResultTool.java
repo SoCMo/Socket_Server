@@ -21,22 +21,29 @@ public class ResultTool {
 
 
     @SuppressWarnings("unchecked")
-    public static Result success(Object object){
+    public static Result success(Object object) {
         Result result = new Result();
         result.setCode(200);
         result.setData(object);
         return result;
     }
 
+    @SuppressWarnings("unchecked")
+    public static Result success(Integer code, Object object) {
+        Result result = new Result();
+        result.setCode(code);
+        result.setData(object);
+        return result;
+    }
 
-    public static Result success(){
+    public static Result success() {
         Result result = new Result();
         result.setCode(200);
         return result;
     }
 
 
-    public static Result error(Integer code, String msg){
+    public static Result error(Integer code, String msg) {
         Result result = new Result();
         result.setCode(code);
         result.setMessage(msg);

@@ -6,6 +6,8 @@ import Tool.SocketIOTool;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -49,15 +51,20 @@ public class UserMap {
     }
 
     public boolean unlock(String name){
-        if(!socketHashMap.containsKey(name)){
+        if (socketHashMap.containsKey(name)) {
             lockedUser.remove(name);
-        } return false;
+        }
+        return false;
     }
 
     public Socket getSocket(String name) throws AllException {
-        if(!socketHashMap.containsKey(name)) throw new AllException(EmAllException.USER_OFFLINE);
-        if(lockedUser.containsKey(name)) throw new AllException(EmAllException.SENDING_MESSAGE);
+        if (!socketHashMap.containsKey(name)) throw new AllException(EmAllException.USER_OFFLINE);
+        if (lockedUser.containsKey(name)) throw new AllException(EmAllException.SENDING_MESSAGE);
         lock(name);
         return socketHashMap.get(name);
+    }
+
+    public List<Socket> allUser() {
+        return new ArrayList<>(socketHashMap.values());
     }
 }
