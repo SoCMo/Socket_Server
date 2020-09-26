@@ -1,4 +1,4 @@
-package Tool;
+package org.example.Socket_Server.Tool;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

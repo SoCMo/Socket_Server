@@ -1,8 +1,8 @@
-package Thread;
+package org.example.Socket_Server.Thread;
 
-import Exception.*;
-import Tool.ResultTool;
-import Tool.SocketIOTool;
+import org.example.Socket_Server.Exception.*;
+import org.example.Socket_Server.Tool.ResultTool;
+import org.example.Socket_Server.Tool.SocketIOTool;
 
 import java.io.IOException;
 import java.net.Socket;

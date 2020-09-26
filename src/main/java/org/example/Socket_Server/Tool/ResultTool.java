@@ -1,6 +1,6 @@
-package Tool;
+package org.example.Socket_Server.Tool;
 
-import Model.response.Result;
+import org.example.Socket_Server.Model.response.Result;
 
 import java.util.List;
 

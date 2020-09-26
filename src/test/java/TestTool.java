@@ -1,5 +1,5 @@
-import Model.ConstRepository;
-import Tool.SocketIOTool;
+import org.example.Socket_Server.Model.ConstRepository;
+import org.example.Socket_Server.Tool.SocketIOTool;
 
 import java.io.*;
 import java.net.Socket;

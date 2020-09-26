@@ -1,4 +1,4 @@
-package Thread;
+package org.example.Socket_Server.Thread;
 
 import java.net.Socket;
 import java.util.HashMap;

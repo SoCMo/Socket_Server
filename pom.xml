@@ -63,7 +63,7 @@
                         <arguments>
                             <argument>-classpath</argument>
                             <classpath/>
-                            <argument>Runner</argument>
+                            <argument>org.example.Socket_Server.Runner</argument>
                         </arguments>
                     </configuration>
                 </plugin>

@@ -1,4 +1,4 @@
-package Model.response;
+package org.example.Socket_Server.Model.response;
 
 import lombok.Data;
 

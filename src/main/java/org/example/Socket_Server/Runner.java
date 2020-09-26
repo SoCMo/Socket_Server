@@ -1,5 +1,7 @@
-import Model.ConstRepository;
-import Thread.*;
+package org.example.Socket_Server;
+
+import org.example.Socket_Server.Model.ConstRepository;
+import org.example.Socket_Server.Thread.*;
 
 import java.io.*;
 import java.net.ServerSocket;

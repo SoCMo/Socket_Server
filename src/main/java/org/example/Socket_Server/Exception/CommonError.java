@@ -1,4 +1,4 @@
-package Exception;
+package org.example.Socket_Server.Exception;
 
 /**
  * program: CommonError

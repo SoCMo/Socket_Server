@@ -1,12 +1,12 @@
-package Service;
+package org.example.Socket_Server.Service;
 
-import Model.response.MsgResponse;
-import Thread.*;
-import Exception.*;
+import org.example.Socket_Server.Model.response.MsgResponse;
+import org.example.Socket_Server.Thread.*;
+import org.example.Socket_Server.Exception.*;
 
-import Model.response.Result;
-import Tool.ResultTool;
-import Tool.SocketIOTool;
+import org.example.Socket_Server.Model.response.Result;
+import org.example.Socket_Server.Tool.ResultTool;
+import org.example.Socket_Server.Tool.SocketIOTool;
 
 import java.net.Socket;
 

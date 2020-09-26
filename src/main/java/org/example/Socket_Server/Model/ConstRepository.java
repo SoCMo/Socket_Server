@@ -1,4 +1,4 @@
-package Model;
+package org.example.Socket_Server.Model;
 
 /**
  * program: UserConstRepository
