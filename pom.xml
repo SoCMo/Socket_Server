@@ -42,7 +42,7 @@
                     <configuration>
                         <archive>
                             <manifest>
-                                <mainClass>Runner</mainClass>
+                                <mainClass>org.example.Socket_Server.Runner</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
