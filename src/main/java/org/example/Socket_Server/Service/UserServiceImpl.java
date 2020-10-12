@@ -26,6 +26,7 @@ public class UserServiceImpl {
             } else {
                 ThreadPool.userMap.login(name, socket);
                 System.out.println(name + "登录成功");
+                MsgServiceImpl.sendMsg("*", name + "上线了!", "Server");
                 userName.append(name);
                 return ResultTool.success();
             }
@@ -45,6 +46,7 @@ public class UserServiceImpl {
                 return ResultTool.error(401, "该用户未登录！");
             }else {
                 ThreadPool.userMap.logout(name);
+                MsgServiceImpl.sendMsg("*", name + "上线了!", "Server");
                 return ResultTool.success();
             }
         } catch (AllException e) {
